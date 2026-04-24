@@ -1,0 +1,38 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified Southeast Asia map">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#edf4ff"/>
+      <stop offset="100%" stop-color="#e2edfd"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="900" height="520" fill="url(#sea)"/>
+
+  <!-- Mainland Southeast Asia -->
+  <path d="M320 130L360 105L405 116L438 148L450 188L432 220L390 236L354 225L326 194L314 160Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Vietnam coast -->
+  <path d="M442 160L462 174L470 198L466 226L452 248L438 265L430 250L438 224L438 195Z"
+        fill="#bed2f0" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Malaysia peninsula -->
+  <path d="M390 250L408 274L402 302L388 322L374 308L380 278Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Singapore -->
+  <circle cx="396" cy="332" r="4" fill="#b8cdee"/>
+  <!-- Sumatra -->
+  <path d="M320 292L354 310L368 350L350 390L316 402L300 362L306 324Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Java -->
+  <path d="M380 386L460 392L468 408L386 406Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Borneo -->
+  <path d="M444 260L492 252L534 280L526 330L478 352L438 332L426 292Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Sulawesi -->
+  <path d="M548 268L572 250L594 260L582 282L600 298L576 312L552 298L540 280Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <!-- Philippines -->
+  <path d="M620 154L646 140L662 156L652 182L628 186Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+  <path d="M654 194L676 206L670 232L646 226L644 206Z"
+        fill="#c8d9f3" stroke="#a9c3e8" stroke-width="2"/>
+</svg>
