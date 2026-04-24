@@ -201,8 +201,8 @@ a {
   position: relative;
   z-index: 2;
   display: grid;
-  gap: 2.2rem;
-  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  grid-template-columns: 1fr;
   align-items: center;
 }
 
@@ -218,52 +218,6 @@ a {
   color: rgba(255, 255, 255, 0.86);
 }
 
-.hero-badge {
-  display: inline-flex;
-  margin-bottom: 0.85rem;
-  padding: 0.38rem 0.72rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.hero-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 18px;
-  padding: 1.55rem;
-  box-shadow: 0 28px 48px rgba(3, 14, 35, 0.35);
-}
-
-.hero-card h2 {
-  margin: 0.55rem 0 0.85rem;
-  font-size: 1.35rem;
-}
-
-.hero-card p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.hero-support-card {
-  max-width: 420px;
-  justify-self: end;
-}
-
-.hero-support-link {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #dbe8ff;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -273,8 +227,7 @@ a {
   color: var(--navy-800);
 }
 
-.hero .eyebrow,
-.hero-card .eyebrow {
+.hero .eyebrow {
   color: #d5e5ff;
 }
 
