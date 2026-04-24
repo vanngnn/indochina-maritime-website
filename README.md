@@ -1,6 +1,6 @@
-# Indochina Maritime Website
+# Indochina Shipping Service and Forwarding Co. Ltd Website
 
-Static marketing website for **Indochina Maritime** with a navy/white theme and service sections for:
+Static marketing website for **Indochina Shipping Service and Forwarding Co. Ltd** with a navy/white theme and service sections for:
 
 - Dunnage supply
 - Visa and immigration support
