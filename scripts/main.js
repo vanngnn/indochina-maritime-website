@@ -20,6 +20,10 @@ if (menuToggle && mainNav) {
   });
 }
 
+if (typeof lucide !== "undefined") {
+  lucide.createIcons();
+}
+
 const seaMapElement = document.getElementById("sea-map");
 
 if (seaMapElement && typeof L !== "undefined") {
