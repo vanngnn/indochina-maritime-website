@@ -83,7 +83,7 @@ if (seaMapElement && typeof L !== "undefined") {
 }
 
 if (contactForm instanceof HTMLFormElement) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (!contactForm.reportValidity()) {
@@ -101,17 +101,41 @@ if (contactForm instanceof HTMLFormElement) {
         : (formData.get("service") || "").toString().trim();
     const message = (formData.get("message") || "").toString().trim();
 
-    const subject = `Website Inquiry - ${company || name || "New Contact"}`;
-    const body = [
-      `Name: ${name}`,
-      `Company: ${company}`,
-      `Email: ${email}`,
-      `Service Needed: ${service}`,
-      "",
-      "Message:",
-      message || "(No additional message provided.)"
-    ].join("\n");
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
 
-    window.location.href = `mailto:info@indochina-maritime.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/info@indochina-maritime.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          service,
+          message: message || "(No additional message provided.)",
+          _subject: `Website Inquiry - ${company || name || "New Contact"}`,
+          _captcha: "false"
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send inquiry");
+      }
+
+      alert("Thank you for your inquiry, we'll get back to you as soon as possible");
+      contactForm.reset();
+    } catch (error) {
+      alert("Sorry, your inquiry could not be sent right now. Please try again.");
+    } finally {
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+    }
   });
 }
