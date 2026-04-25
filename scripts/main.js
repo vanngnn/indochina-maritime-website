@@ -25,6 +25,7 @@ if (typeof lucide !== "undefined") {
 }
 
 const seaMapElement = document.getElementById("sea-map");
+const contactForm = document.getElementById("contact-form");
 
 if (seaMapElement && typeof L !== "undefined") {
   const seaMap = L.map("sea-map", {
@@ -79,4 +80,38 @@ if (seaMapElement && typeof L !== "undefined") {
 
   // Keep all country markers visible, including Malaysia and Indonesia.
   seaMap.fitBounds(coverageBounds, { padding: [24, 24] });
+}
+
+if (contactForm instanceof HTMLFormElement) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) {
+      return;
+    }
+
+    const formData = new FormData(contactForm);
+    const name = (formData.get("name") || "").toString().trim();
+    const company = (formData.get("company") || "").toString().trim();
+    const email = (formData.get("email") || "").toString().trim();
+    const serviceSelect = contactForm.querySelector('select[name="service"]');
+    const service =
+      serviceSelect instanceof HTMLSelectElement
+        ? serviceSelect.options[serviceSelect.selectedIndex].text
+        : (formData.get("service") || "").toString().trim();
+    const message = (formData.get("message") || "").toString().trim();
+
+    const subject = `Website Inquiry - ${company || name || "New Contact"}`;
+    const body = [
+      `Name: ${name}`,
+      `Company: ${company}`,
+      `Email: ${email}`,
+      `Service Needed: ${service}`,
+      "",
+      "Message:",
+      message || "(No additional message provided.)"
+    ].join("\n");
+
+    window.location.href = `mailto:info@indochina-maritime.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 }
