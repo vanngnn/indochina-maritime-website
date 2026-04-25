@@ -114,12 +114,14 @@ if (contactForm instanceof HTMLFormElement) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          name,
-          company,
-          email,
-          service,
-          message: message || "(No additional message provided.)",
-          _subject: `Website Inquiry - ${company || name || "New Contact"}`,
+          Name: name,
+          Company: company,
+          Email: email,
+          "Service Needed": service,
+          Message: message || "(No additional message provided.)",
+          _subject: `New Website Inquiry: ${service}`,
+          _template: "table",
+          _replyto: email,
           _captcha: "false"
         })
       });
