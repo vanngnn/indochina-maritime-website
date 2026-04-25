@@ -107,7 +107,7 @@ if (contactForm instanceof HTMLFormElement) {
     }
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@indochina-maritime.com", {
+      const response = await fetch("https://formsubmit.co/ajax/indochinamaritimeinquiries@gmail.com", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -122,6 +122,7 @@ if (contactForm instanceof HTMLFormElement) {
           _subject: `New Website Inquiry: ${service}`,
           _template: "table",
           _replyto: email,
+          _cc: "info@indochina-maritime.com",
           _captcha: "false"
         })
       });
