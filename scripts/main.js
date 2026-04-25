@@ -57,8 +57,11 @@ if (seaMapElement && typeof L !== "undefined") {
     .addTo(seaMap)
     .bindPopup(vietnamHub.name);
 
+  const coverageBounds = [[vietnamHub.lat, vietnamHub.lng]];
+
   connectedPoints.forEach((point) => {
     L.marker([point.lat, point.lng]).addTo(seaMap).bindPopup(point.name);
+    coverageBounds.push([point.lat, point.lng]);
 
     L.polyline(
       [
@@ -73,4 +76,7 @@ if (seaMapElement && typeof L !== "undefined") {
       }
     ).addTo(seaMap);
   });
+
+  // Keep all country markers visible, including Malaysia and Indonesia.
+  seaMap.fitBounds(coverageBounds, { padding: [24, 24] });
 }
