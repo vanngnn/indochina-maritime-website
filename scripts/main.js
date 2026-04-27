@@ -142,3 +142,167 @@ if (contactForm instanceof HTMLFormElement) {
     }
   });
 }
+
+const servicePhotoPanels = Array.from(document.querySelectorAll(".service-photo-panel"));
+
+if (servicePhotoPanels.length > 0) {
+  const lightbox = document.createElement("div");
+  lightbox.className = "gallery-lightbox";
+  lightbox.setAttribute("aria-hidden", "true");
+  lightbox.innerHTML = `
+    <div class="gallery-lightbox-content" role="dialog" aria-modal="true" aria-label="Image gallery viewer">
+      <button type="button" class="gallery-lightbox-close" aria-label="Close gallery">✕</button>
+      <button type="button" class="gallery-lightbox-prev" aria-label="Previous image">‹</button>
+      <img class="gallery-lightbox-image" alt="">
+      <button type="button" class="gallery-lightbox-next" aria-label="Next image">›</button>
+      <p class="gallery-lightbox-caption"></p>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lightboxImage = lightbox.querySelector(".gallery-lightbox-image");
+  const lightboxCaption = lightbox.querySelector(".gallery-lightbox-caption");
+  const closeButton = lightbox.querySelector(".gallery-lightbox-close");
+  const prevButton = lightbox.querySelector(".gallery-lightbox-prev");
+  const nextButton = lightbox.querySelector(".gallery-lightbox-next");
+
+  let currentSlides = [];
+  let currentLightboxIndex = 0;
+
+  const renderLightbox = () => {
+    const active = currentSlides[currentLightboxIndex];
+    if (!(active instanceof HTMLImageElement) || !(lightboxImage instanceof HTMLImageElement) || !(lightboxCaption instanceof HTMLParagraphElement)) {
+      return;
+    }
+    lightboxImage.src = active.src;
+    lightboxImage.alt = active.alt;
+    lightboxCaption.textContent = active.alt || "";
+  };
+
+  const openLightbox = (slides, index) => {
+    if (!(closeButton instanceof HTMLButtonElement)) {
+      return;
+    }
+    currentSlides = slides;
+    currentLightboxIndex = index;
+    renderLightbox();
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  const shiftLightbox = (delta) => {
+    if (currentSlides.length === 0) {
+      return;
+    }
+    currentLightboxIndex = (currentLightboxIndex + delta + currentSlides.length) % currentSlides.length;
+    renderLightbox();
+  };
+
+  if (closeButton instanceof HTMLButtonElement) {
+    closeButton.addEventListener("click", closeLightbox);
+  }
+  if (prevButton instanceof HTMLButtonElement) {
+    prevButton.addEventListener("click", () => shiftLightbox(-1));
+  }
+  if (nextButton instanceof HTMLButtonElement) {
+    nextButton.addEventListener("click", () => shiftLightbox(1));
+  }
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) {
+      return;
+    }
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowRight") {
+      shiftLightbox(1);
+    } else if (event.key === "ArrowLeft") {
+      shiftLightbox(-1);
+    }
+  });
+
+  servicePhotoPanels.forEach((panel) => {
+    const track = panel.querySelector(".service-photo-track");
+    const dotsHost = panel.querySelector(".service-photo-dots");
+    if (!(track instanceof HTMLDivElement) || !(dotsHost instanceof HTMLDivElement)) {
+      return;
+    }
+
+    const slides = Array.from(track.querySelectorAll(".service-photo-slide"));
+    const images = slides
+      .map((slide) => slide.querySelector("img"))
+      .filter((image) => image instanceof HTMLImageElement);
+
+    if (slides.length === 0) {
+      return;
+    }
+
+    let activeIndex = 0;
+    let intervalId;
+    const autoInterval = Number(panel.getAttribute("data-auto-interval")) || 5000;
+    const dots = slides.map((_, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "service-photo-dot";
+      dot.setAttribute("aria-label", `Show image ${index + 1}`);
+      dotsHost.appendChild(dot);
+      return dot;
+    });
+
+    const setActiveSlide = (index) => {
+      activeIndex = index;
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeIndex);
+      });
+    };
+
+    const shiftSlide = () => {
+      const nextIndex = (activeIndex + 1) % slides.length;
+      setActiveSlide(nextIndex);
+    };
+
+    const startAutoSlide = () => {
+      if (slides.length < 2) {
+        return;
+      }
+      intervalId = window.setInterval(shiftSlide, autoInterval);
+    };
+
+    const stopAutoSlide = () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        setActiveSlide(index);
+      });
+    });
+
+    slides.forEach((slide, index) => {
+      slide.addEventListener("click", () => {
+        openLightbox(images, index);
+      });
+    });
+
+    panel.addEventListener("mouseenter", stopAutoSlide);
+    panel.addEventListener("mouseleave", startAutoSlide);
+
+    setActiveSlide(0);
+    startAutoSlide();
+  });
+}
