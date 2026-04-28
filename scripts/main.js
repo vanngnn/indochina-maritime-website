@@ -144,11 +144,12 @@ if (contactForm instanceof HTMLFormElement) {
     const name = (formData.get("name") || "").toString().trim();
     const company = (formData.get("company") || "").toString().trim();
     const email = (formData.get("email") || "").toString().trim();
-    const serviceSelect = contactForm.querySelector('select[name="service"]');
-    const service =
-      serviceSelect instanceof HTMLSelectElement
-        ? serviceSelect.options[serviceSelect.selectedIndex].text
-        : (formData.get("service") || "").toString().trim();
+    const selectedServices = formData.getAll("service").map((value) => value.toString().trim()).filter(Boolean);
+    if (selectedServices.length === 0) {
+      alert("Please select at least one service needed.");
+      return;
+    }
+    const service = selectedServices.length > 0 ? selectedServices.join(", ") : "Unspecified service";
     const message = (formData.get("message") || "").toString().trim();
 
     const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -181,8 +182,7 @@ if (contactForm instanceof HTMLFormElement) {
         throw new Error("Unable to send inquiry");
       }
 
-      alert("Thank you for your inquiry, we'll get back to you as soon as possible");
-      contactForm.reset();
+      window.location.href = "inquiry-confirmation.html";
     } catch (error) {
       alert("Sorry, your inquiry could not be sent right now. Please try again.");
     } finally {

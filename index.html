@@ -36,7 +36,6 @@
             <a href="dunnage-material-supplying.html">Dunnage Material Supplying</a>
           </div>
         </div>
-        <a href="#news">News</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -331,14 +330,25 @@
           <label for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="you@company.com" required>
 
-          <label for="service">Service Needed</label>
-          <select id="service" name="service" required>
-            <option value="">Select a service</option>
-            <option value="agency">Shipping Agency for Vessels</option>
-            <option value="crew-visa">Crew Change & Visa Arrangements</option>
-            <option value="spares-forwarding">Spare Parts Delivery & Forwarding Services</option>
-            <option value="dunnage">Dunnage Material Supplying</option>
-          </select>
+          <label>Services Needed (select one or more)</label>
+          <div class="service-checkboxes" role="group" aria-label="Services Needed">
+            <label class="service-checkbox-item">
+              <input type="checkbox" name="service" value="Shipping Agency for Vessels">
+              <span>Shipping Agency for Vessels</span>
+            </label>
+            <label class="service-checkbox-item">
+              <input type="checkbox" name="service" value="Crew Change & Visa Arrangements">
+              <span>Crew Change & Visa Arrangements</span>
+            </label>
+            <label class="service-checkbox-item">
+              <input type="checkbox" name="service" value="Spare Parts Delivery & Forwarding Services">
+              <span>Spare Parts Delivery & Forwarding Services</span>
+            </label>
+            <label class="service-checkbox-item">
+              <input type="checkbox" name="service" value="Dunnage Material Supplying">
+              <span>Dunnage Material Supplying</span>
+            </label>
+          </div>
 
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="4" placeholder="Share vessel ETA, port, and requirements"></textarea>

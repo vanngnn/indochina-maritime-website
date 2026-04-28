@@ -1340,6 +1340,34 @@ a {
   border-color: var(--navy-800);
 }
 
+.service-checkboxes {
+  border: 1px solid #c9d7ee;
+  border-radius: 10px;
+  background: #fcfdff;
+  padding: 0.55rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-checkbox-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  align-items: start;
+  column-gap: 0.65rem;
+  font-size: 0.94rem;
+  color: var(--ink-900);
+  font-weight: 500;
+  width: 100%;
+}
+
+.service-checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--navy-800);
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   background: #f9fbff;
