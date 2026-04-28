@@ -25,6 +25,8 @@ if (typeof lucide !== "undefined") {
 }
 
 const seaMapElement = document.getElementById("sea-map");
+const coveragePointsList = document.getElementById("coverage-points-list");
+const coverageToggleButtons = Array.from(document.querySelectorAll(".coverage-toggle-btn"));
 const contactForm = document.getElementById("contact-form");
 
 if (seaMapElement && typeof L !== "undefined") {
@@ -38,13 +40,29 @@ if (seaMapElement && typeof L !== "undefined") {
   }).addTo(seaMap);
 
   const vietnamHub = { name: "Vietnam (Hub)", lat: 10.823099, lng: 106.629662 };
-  const connectedPoints = [
-    { name: "Singapore", lat: 1.29027, lng: 103.851959 },
-    { name: "Thailand", lat: 13.756331, lng: 100.501762 },
-    { name: "Philippines", lat: 14.599512, lng: 120.984222 },
-    { name: "Malaysia", lat: 3.139003, lng: 101.686852 },
-    { name: "Indonesia", lat: -6.208763, lng: 106.845599 }
-  ];
+  const coverageModes = {
+    international: [
+      { name: "Thailand", lat: 13.756331, lng: 100.501762 },
+      { name: "Philippines", lat: 14.599512, lng: 120.984222 },
+      { name: "Indonesia", lat: -6.208763, lng: 106.845599 },
+      { name: "Singapore", lat: 1.29027, lng: 103.851959 },
+      { name: "Brunei", lat: 4.903052, lng: 114.939821 },
+      { name: "Malaysia", lat: 3.139003, lng: 101.686852 },
+      { name: "Cambodia", lat: 11.556374, lng: 104.928209 },
+      { name: "Myanmar", lat: 16.840939, lng: 96.173526 },
+      { name: "China", lat: 22.319303, lng: 114.169361 },
+      { name: "Taiwan", lat: 25.033964, lng: 121.564468 },
+      { name: "Japan", lat: 35.676422, lng: 139.650027 },
+      { name: "Korea", lat: 37.566536, lng: 126.977966 }
+    ],
+    domestic: [
+      { name: "Ho Chi Minh City", lat: 10.776889, lng: 106.700806 },
+      { name: "Hai Phong", lat: 20.844911, lng: 106.688084 },
+      { name: "Da Nang", lat: 16.054407, lng: 108.202164 },
+      { name: "Vung Tau", lat: 10.411379, lng: 107.136224 },
+      { name: "Can Tho", lat: 10.045162, lng: 105.746857 }
+    ]
+  };
 
   const vietnamHubIcon = L.icon({
     iconUrl: "assets/logo.svg",
@@ -58,28 +76,60 @@ if (seaMapElement && typeof L !== "undefined") {
     .addTo(seaMap)
     .bindPopup(vietnamHub.name);
 
-  const coverageBounds = [[vietnamHub.lat, vietnamHub.lng]];
+  const coverageLayer = L.layerGroup().addTo(seaMap);
 
-  connectedPoints.forEach((point) => {
-    L.marker([point.lat, point.lng]).addTo(seaMap).bindPopup(point.name);
-    coverageBounds.push([point.lat, point.lng]);
+  const setCoverageMode = (mode) => {
+    const activeMode = mode in coverageModes ? mode : "international";
+    const activePoints = coverageModes[activeMode];
+    coverageLayer.clearLayers();
 
-    L.polyline(
-      [
-        [vietnamHub.lat, vietnamHub.lng],
-        [point.lat, point.lng]
-      ],
-      {
-        color: "#1f4d8f",
-        weight: 2,
-        opacity: 0.75,
-        dashArray: "6, 5"
-      }
-    ).addTo(seaMap);
+    if (coveragePointsList instanceof HTMLUListElement) {
+      coveragePointsList.innerHTML = "";
+      activePoints.forEach((point) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = point.name;
+        coveragePointsList.appendChild(listItem);
+      });
+    }
+
+    const coverageBounds = [[vietnamHub.lat, vietnamHub.lng]];
+
+    activePoints.forEach((point) => {
+      L.marker([point.lat, point.lng]).addTo(coverageLayer).bindPopup(point.name);
+      coverageBounds.push([point.lat, point.lng]);
+
+      L.polyline(
+        [
+          [vietnamHub.lat, vietnamHub.lng],
+          [point.lat, point.lng]
+        ],
+        {
+          color: "#1f4d8f",
+          weight: 2,
+          opacity: 0.75,
+          dashArray: "6, 5"
+        }
+      ).addTo(coverageLayer);
+    });
+
+    seaMap.fitBounds(coverageBounds, { padding: [24, 24] });
+
+    coverageToggleButtons.forEach((button) => {
+      const buttonMode = button.getAttribute("data-coverage-mode");
+      const isActive = buttonMode === activeMode;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+  };
+
+  coverageToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextMode = button.getAttribute("data-coverage-mode") || "international";
+      setCoverageMode(nextMode);
+    });
   });
 
-  // Keep all country markers visible, including Malaysia and Indonesia.
-  seaMap.fitBounds(coverageBounds, { padding: [24, 24] });
+  setCoverageMode("international");
 }
 
 if (contactForm instanceof HTMLFormElement) {

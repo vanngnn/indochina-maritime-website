@@ -46,16 +46,26 @@
   <main id="home">
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-content">
+        <div class="hero-top">
           <p class="eyebrow">Shipping Agency & Logistics</p>
           <h1>Maritime Agency Services and Flexible Logistics Solutions</h1>
-          <p>
-            Indochina Shipping Service and Forwarding Co. Ltd supports domestic and international clients with agency,
-            logistics, crew support, and port operations services across key gateways.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary hero-cta" href="#contact">Get in Touch</a>
-            <a class="btn btn-secondary" href="#services">View Services</a>
+        </div>
+        <div class="hero-content-grid">
+          <div class="hero-collage" aria-label="Top services photo collage">
+            <img src="assets/images/services/shipping-agency-for-vessels/AGY4.jpg" alt="Marine agency operation with crew transfer support">
+            <img src="assets/images/services/dunnage-material-supplying/DUNNAGE4.jpg" alt="Bulk cargo discharge and hold operation">
+            <img src="assets/images/services/shipping-agency-for-vessels/AGENCY2.jpg" alt="Port crane and vessel handling operation">
+            <img src="assets/images/services/crew-change-visa-arrangements/CC10.jpg" alt="Crew coordination and port-side transfer support">
+          </div>
+          <div class="hero-detail">
+            <p class="hero-subheading">
+              Indochina Shipping Service and Forwarding Co. Ltd supports domestic and international clients with agency,
+              logistics, crew support, and port operations services across key gateways.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary hero-cta" href="#contact">Get in Touch</a>
+              <a class="btn btn-secondary" href="#services">View Services</a>
+            </div>
           </div>
         </div>
       </div>
@@ -70,58 +80,39 @@
       </div>
     </section>
 
-    <section class="section operations-gallery-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">In Operation</p>
-          <h2>Shipment handling and sea transport in action</h2>
-        </div>
-        <div class="operations-gallery">
-          <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80" alt="Cargo containers being handled at port terminal">
-            <figcaption>Port shipment handling and terminal coordination</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1200&q=80" alt="Container vessel on open sea">
-            <figcaption>Sea-going container vessel operations</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80" alt="Container yard with cargo stacks and handling equipment">
-            <figcaption>Container yard and freight handling workflow</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
     <section id="services" class="section">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Our Services</p>
-          <h2>Comprehensive maritime solutions for modern shipping</h2>
+          <h2>Comprehensive maritime solutions for<br>modern shipping</h2>
           <p class="services-intro">
             We deliver practical, end-to-end support across marine operations, logistics, and cargo documentation workflows.
           </p>
         </div>
         <div class="services-grid">
           <article id="service-agency" class="service-card">
+            <img class="service-image" src="assets/images/services/shipping-agency-for-vessels/AGENCY2.jpg" alt="Shipping agency vessel operations">
             <div class="service-icon" aria-hidden="true"><i data-lucide="ship"></i></div>
             <h3>Shipping Agency for Vessels</h3>
             <p>Comprehensive vessel agency support, including port clearance coordination, husbandry services, and operational follow-up from arrival to departure.</p>
             <a class="service-link" href="shipping-agency-for-vessels.html">Learn more</a>
           </article>
           <article id="service-crew-visa" class="service-card">
+            <img class="service-image" src="assets/images/services/crew-change-visa-arrangements/CC2.jpg" alt="Crew transfer and visa support coordination">
             <div class="service-icon" aria-hidden="true"><i data-lucide="users"></i></div>
             <h3>Crew Change & Visa Arrangements</h3>
             <p>End-to-end handling for crew sign-on and sign-off, with visa processing and document coordination to keep rotations smooth and compliant.</p>
             <a class="service-link" href="crew-change-visa-arrangements.html">Learn more</a>
           </article>
           <article id="service-spares-forwarding" class="service-card">
+            <img class="service-image" src="assets/images/services/spare-parts-delivery-forwarding/SSP2.jpg" alt="Spare parts delivery and forwarding logistics">
             <div class="service-icon" aria-hidden="true"><i data-lucide="truck"></i></div>
             <h3>Spare Parts Delivery & Forwarding Services</h3>
             <p>Fast spare parts logistics and freight forwarding support with shipment tracking, customs documentation, and delivery scheduling.</p>
             <a class="service-link" href="spare-parts-delivery-forwarding.html">Learn more</a>
           </article>
           <article id="service-dunnage" class="service-card">
+            <img class="service-image" src="assets/images/services/dunnage-material-supplying/DUNNAGE1.jpg" alt="Dunnage material supply for cargo securing">
             <div class="service-icon" aria-hidden="true"><i data-lucide="package"></i></div>
             <h3>Dunnage Material Supplying</h3>
             <p>Reliable supply of dunnage materials for cargo protection and securing requirements, delivered according to vessel schedule and port conditions.</p>
@@ -132,32 +123,75 @@
     </section>
 
     <section id="about" class="section section-alt">
-      <div class="container about-grid">
-        <div>
-          <p class="eyebrow">Who We Are</p>
-          <h2>Regional expertise with disciplined on-ground delivery</h2>
-          <p>
-            Indochina Shipping Service and Forwarding Co. Ltd supports vessel owners, operators, and technical managers with responsive
-            marine services. We work closely with vessel owners and operators to ensure every port call is handled efficiently, compliantly, and without disruption.
+      <div class="container">
+        <p class="eyebrow about-label">Who We Are</p>
+        <div class="about-service-collage" aria-label="Service photo collage">
+          <img src="assets/images/services/shipping-agency-for-vessels/AGENCY1.jpg" alt="Shipping agency service activity">
+          <img src="assets/images/services/crew-change-visa-arrangements/CC1.jpg" alt="Crew change support activity">
+          <img src="assets/images/services/spare-parts-delivery-forwarding/SSP1.jpg" alt="Spare parts forwarding activity">
+          <img src="assets/images/services/dunnage-material-supplying/DUNNAGE1.jpg" alt="Dunnage supply service activity">
+          <img src="assets/images/services/shipping-agency-for-vessels/AGY4.jpg" alt="Vessel support operation">
+          <img src="assets/images/services/crew-change-visa-arrangements/CC8.jpg" alt="Crew transfer process support">
+          <img src="assets/images/services/spare-parts-delivery-forwarding/SSP3.jpg" alt="Maritime spare parts logistics">
+          <img src="assets/images/services/dunnage-material-supplying/DUNNAGE4.jpg" alt="Cargo securing and dunnage supply">
+          <img src="assets/images/services/shipping-agency-for-vessels/AGY11.jpg" alt="Port agency coordination service">
+        </div>
+        <div class="about-grid">
+          <div>
+            <h2>Regional expertise with disciplined on-ground delivery</h2>
+            <p>
+              Indochina Shipping Service and Forwarding Co. Ltd supports vessel owners, operators, and technical managers with responsive
+              marine services. We work closely with vessel owners and operators to ensure every port call is handled efficiently, compliantly, and without disruption.
+            </p>
+          </div>
+            <div class="stats-grid">
+            <div class="stat-card">
+              <strong>10+</strong>
+              <span>Years in marine support</span>
+            </div>
+            <div class="stat-card">
+              <strong>On-Demand Support</strong>
+              <span>Coordinated assistance based on port and vessel requirements</span>
+            </div>
+            <div class="stat-card">
+              <strong>1000+</strong>
+              <span>Crew movements handled</span>
+            </div>
+            <div class="stat-card">
+              <strong>Multi-Port</strong>
+              <span>Service coverage network</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Collaboration Network</p>
+          <h2>Trusted collaboration across marine operations</h2>
+          <p class="services-intro">
+            We coordinate with port agents, logistics providers, customs teams, and technical support partners to deliver reliable end-to-end execution.
           </p>
         </div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <strong>10+</strong>
-            <span>Years in marine support</span>
-          </div>
-          <div class="stat-card">
-            <strong>On-Demand Support</strong>
-            <span>Coordinated assistance based on port and vessel requirements</span>
-          </div>
-          <div class="stat-card">
-            <strong>1000+</strong>
-            <span>Crew movements handled</span>
-          </div>
-          <div class="stat-card">
-            <strong>Multi-Port</strong>
-            <span>Service coverage network</span>
-          </div>
+        <div class="partners-grid">
+          <article class="partner-card">
+            <h3>Port & Terminal Partners</h3>
+            <p>Operational support for berthing schedules, cargo handling, and dock coordination.</p>
+          </article>
+          <article class="partner-card">
+            <h3>Logistics & Freight Partners</h3>
+            <p>Integrated transport, warehousing, and forwarding support across key routes.</p>
+          </article>
+          <article class="partner-card">
+            <h3>Customs & Compliance Partners</h3>
+            <p>Documentation processing and local clearance support for timely vessel turnaround.</p>
+          </article>
+          <article class="partner-card">
+            <h3>Technical & Husbandry Partners</h3>
+            <p>On-ground assistance for crew, spare parts, and vessel operational requirements.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -166,26 +200,87 @@
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Regional Coverage</p>
-          <h2>We operate across Southeast Asia</h2>
+          <h2>We operate internationally</h2>
         </div>
         <p class="coverage-text">
           Indochina Shipping Service and Forwarding Co. Ltd handles sign-on and sign-off documentation, customs paperwork,
-          and shipment processing for cargo moving to and from Vietnam across Southeast Asia.
+          and shipment processing for cargo moving to and from Vietnam across international maritime routes.
         </p>
         <div class="coverage-grid">
           <div class="coverage-list">
             <h3>Active Coverage Points</h3>
-            <ul>
-              <li>Singapore</li>
+            <div class="coverage-toggle" role="tablist" aria-label="Coverage type">
+              <button type="button" class="coverage-toggle-btn is-active" data-coverage-mode="international" role="tab" aria-selected="true">International</button>
+              <button type="button" class="coverage-toggle-btn" data-coverage-mode="domestic" role="tab" aria-selected="false">Domestic</button>
+            </div>
+            <ul id="coverage-points-list">
               <li>Thailand</li>
               <li>Philippines</li>
-              <li>Malaysia</li>
               <li>Indonesia</li>
+              <li>Singapore</li>
+              <li>Brunei</li>
+              <li>Malaysia</li>
+              <li>Cambodia</li>
+              <li>Myanmar</li>
+              <li>China</li>
+              <li>Taiwan</li>
+              <li>Japan</li>
+              <li>Korea</li>
             </ul>
           </div>
           <div class="map-card" aria-label="Southeast Asia map with coverage points">
             <div id="sea-map" class="leaflet-map" role="img" aria-label="Interactive map of Southeast Asia coverage points"></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="our-partners" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Our Partners</p>
+          <h2>Trusted customers we proudly support</h2>
+          <p class="services-intro">
+            We are honored to support leading maritime companies with dependable, on-ground execution across regional operations.
+          </p>
+        </div>
+        <div class="our-partners-grid">
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/trust maritime logo.jpeg" alt="Trust Maritime Services Pte Ltd logo">
+            </div>
+            <h3>Trust Maritime Services Pte Ltd</h3>
+          </article>
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/LP logo.png" alt="LP: Le Pham Company Limited logo">
+            </div>
+            <h3>LP: Le Pham Company Limited</h3>
+          </article>
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/hangli shipping logo.png" alt="Hangli Shipping logo">
+            </div>
+            <h3>HANGLI SHIPING PTE LTD</h3>
+          </article>
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/oceanic logo.png" alt="Oceanic logo">
+            </div>
+            <h3>Oceanic Co.,Ltd</h3>
+          </article>
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/samjoo logo.png" alt="Samjoo Maritime Co., Ltd logo">
+            </div>
+            <h3>Samjoo Maritime Co., Ltd</h3>
+          </article>
+          <article class="our-partner-card">
+            <div class="our-partner-logo-wrap">
+              <img class="our-partner-logo" src="assets/images/partners/oxk.png" alt="OXK logo">
+            </div>
+            <h3>OXK PTE LTD</h3>
+          </article>
         </div>
       </div>
     </section>
@@ -209,14 +304,6 @@
               <div class="contact-quick-text">
                 <h3>Phone</h3>
                 <p>Vietnam: +84 (0) 983 679 269</p>
-              </div>
-            </div>
-            <div class="contact-quick-item">
-              <span class="contact-quick-icon" aria-hidden="true"><i data-lucide="clock-3"></i></span>
-              <div class="contact-quick-text">
-                <h3>Business Hours</h3>
-                <p>Monday - Friday: 8AM - 6PM</p>
-                <p>Saturday: 9AM - 1PM</p>
               </div>
             </div>
             <div class="contact-quick-item">
