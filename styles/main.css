@@ -485,6 +485,15 @@ a {
   padding-left: 1rem;
 }
 
+.service-detail-content h3 {
+  margin: 1rem 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.service-detail-content h3:first-child {
+  margin-top: 0.2rem;
+}
+
 .service-detail-subheading {
   margin-top: 1.6rem;
 }
@@ -499,7 +508,7 @@ a {
 }
 
 .service-detail-section-compact {
-  padding-top: 0;
+  padding-top: 2rem;
 }
 
 .detail-card {
@@ -537,14 +546,13 @@ a {
 }
 
 .service-sectors-header h2 {
-  margin: 0;
+  margin: 0.45rem 0 0.35rem;
   font-size: clamp(1.8rem, 3.2vw, 2.7rem);
   letter-spacing: -0.015em;
 }
 
 .service-sectors-header p {
-  margin: 0.65rem 0 0;
-  max-width: 790px;
+  margin: 0;
   color: var(--slate-700);
 }
 
