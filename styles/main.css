@@ -511,6 +511,10 @@ a {
   padding-top: 2rem;
 }
 
+.dunnage-scope-section {
+  padding-top: 2rem;
+}
+
 .detail-card {
   background: var(--white);
   border: 1px solid var(--border);
