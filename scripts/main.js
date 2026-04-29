@@ -158,7 +158,7 @@ if (contactForm instanceof HTMLFormElement) {
     }
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzthdzzxofNxV9Ebp2c42Xnul9R-B8NqHLe14bA4zv-nxbuwqKx-pAN56GY4J5vJsl_QQ/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwyOIA1L4n78Xurk1HWARU1JPWCh8lbdyvAHztiPLFO8VAJOZDDfXy-nBYftgSKDCk3UA/exec", {
         method: "POST",
         mode: "no-cors",
         body: JSON.stringify({
