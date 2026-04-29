@@ -173,7 +173,6 @@ if (contactForm instanceof HTMLFormElement) {
           _subject: `New Website Inquiry: ${service}`,
           _template: "table",
           _replyto: email,
-          _cc: "info@indochina-maritime.com",
           _captcha: "false"
         })
       });
