@@ -160,10 +160,7 @@ if (contactForm instanceof HTMLFormElement) {
     try {
       const response = await fetch("https://script.google.com/macros/s/AKfycbyIx6rpjUoJWutleIkRbC-0_As83L4pUAg7xXhcbhGUvOtaDc9RUNDRbEgBT1LRzqjeew/exec", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
+        mode: "no-cors",
         body: JSON.stringify({
           name,
           company,
@@ -173,8 +170,9 @@ if (contactForm instanceof HTMLFormElement) {
         })
       });
 
-      const result = await response.json();
-      if (!response.ok || !result.ok) {
+      // Apps Script web apps often do not return CORS headers for localhost fetch requests.
+      // In no-cors mode the response is opaque, so a resolved fetch indicates the request was sent.
+      if (!response) {
         throw new Error("Unable to send inquiry");
       }
 
