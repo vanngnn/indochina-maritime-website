@@ -158,26 +158,23 @@ if (contactForm instanceof HTMLFormElement) {
     }
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/indochinamaritimeinquiries@gmail.com", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbyIx6rpjUoJWutleIkRbC-0_As83L4pUAg7xXhcbhGUvOtaDc9RUNDRbEgBT1LRzqjeew/exec", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          Name: name,
-          Company: company,
-          Email: email,
-          "Service Needed": service,
-          Message: message || "(No additional message provided.)",
-          _subject: `New Website Inquiry: ${service}`,
-          _template: "table",
-          _replyto: email,
-          _captcha: "false"
+          name,
+          company,
+          email,
+          service: selectedServices,
+          message
         })
       });
 
-      if (!response.ok) {
+      const result = await response.json();
+      if (!response.ok || !result.ok) {
         throw new Error("Unable to send inquiry");
       }
 
