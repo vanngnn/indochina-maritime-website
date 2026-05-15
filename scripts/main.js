@@ -65,7 +65,7 @@ if (seaMapElement && typeof L !== "undefined") {
   };
 
   const vietnamHubIcon = L.icon({
-    iconUrl: "assets/logo.svg",
+    iconUrl: "assets/images/LOGO IDC .png",
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
