@@ -64,14 +64,15 @@ if (seaMapElement && typeof L !== "undefined") {
     ]
   };
 
-  const vietnamHubIcon = L.icon({
-    iconUrl: "assets/logo.svg",
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15]
+  const vietnamHubIcon = L.divIcon({
+    className: "vietnam-hub-dot",
+    html: '<span class="vietnam-hub-dot__inner" aria-hidden="true"></span>',
+    iconSize: [26, 26],
+    iconAnchor: [13, 13],
+    popupAnchor: [0, -13]
   });
 
-  // Use company logo to represent Vietnam as the hub pin.
+  // Vietnam hub marker (red dot).
   L.marker([vietnamHub.lat, vietnamHub.lng], { icon: vietnamHubIcon })
     .addTo(seaMap)
     .bindPopup(vietnamHub.name);

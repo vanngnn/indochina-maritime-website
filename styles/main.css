@@ -1251,6 +1251,21 @@ a {
   font-size: 10px;
 }
 
+.vietnam-hub-dot {
+  background: transparent;
+  border: none;
+}
+
+.vietnam-hub-dot__inner {
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: #dc2626;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
 /* Keep map layers and controls below sticky header while scrolling */
 #sea-map .leaflet-pane,
 #sea-map .leaflet-top,
